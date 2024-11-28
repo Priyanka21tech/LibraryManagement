@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <style>
+        /* Simple styles for form and error messages */
+        .error {
+            color: red;
+            display: none;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Transactions</h2>
+    <ul>
+        <li><a href="#" id="checkAvailabilityLink">Check Book Availability</a></li>
+        <li><a href="#">Issue Book</a></li>
+        <li><a href="#">Return Book</a></li>
+        <li><a href="#">Pay Fine</a></li>
+    </ul>
+    <a href="{{ url_for('admin_home') if role == 'admin' else url_for('user_home') }}">Back</a>
+
+    <!-- Form container for book availability -->
+    <div id="availabilityForm" class="form-container" style="display: none;">
+        <h3>Check Book Availability</h3>
+        <form id="checkForm">
+            <label for="bookName">Enter Book Name:</label><br>
+            <input type="text" id="bookName" name="bookName" required><br><br>
+
+            <label for="authorName">Enter Author Name:</label><br>
+            <input type="text" id="authorName" name="authorName" required><br><br>
+
+            <span class="error" id="formError">All fields are required!</span><br><br>
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+<script src="script.js"></script>
+    </body>
+</html>

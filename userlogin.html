@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System-User</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validateForm(event) {
+            // Prevent form submission by default
+            event.preventDefault();
+
+            // Get form inputs
+            const userId = document.getElementById('user-id').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Check if inputs are filled
+            if (userId === "" || password === "") {
+                alert("Please fill in all fields.");
+            } else {
+                // Redirect to the user home page if valid
+                window.location.href = "userHome.html";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="links">
+            <a href="#">Chart</a>
+            <a href="home.html">Back</a>
+        </div>
+        <h2>Library Management System</h2>
+        <form onsubmit="validateForm(event)" method="post">
+            <label for="user-id">User ID</label>
+            <input type="text" id="user-id" name="user-id" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <div class="button-group">
+                <button type="button" class="cancel-button" onclick="window.history.back()">Cancel</button>
+                <button type="submit" class="login-button">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
