@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System-Admin</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
     <script>
         function validateForm(event) {
             // Prevent form submission by default
@@ -19,7 +19,7 @@
                 alert("Please fill in all fields.");
             } else {
                 // Redirect to the admin home page if valid
-                window.location.href = "adminHome.html";
+                window.location.href = "{{ url_for('admin_home') }}";
             }
         }
     </script>
@@ -28,7 +28,8 @@
     <div class="container">
         <div class="links">
             <a href="#">Chart</a>
-            <a href="home.html">Back</a>
+            <a href="{{ url_for('home') }}">Back</a>
+
         </div>
         <h2>Library Management System</h2>
         <form onsubmit="validateForm(event)" method="post">
@@ -43,6 +44,49 @@
                 <button type="submit" class="login-button">Login</button>
             </div>
         </form>
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System - Admin Login</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="links">
+            <a href="#">Chart</a>
+            <a href="{{ url_for('home') }}">Back</a>
+        </div>
+        <h2>Library Management System - Admin Login</h2>
+        <form action="{{ url_for('admin_login') }}" method="post">
+            <label for="username">User ID</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <div class="button-group">
+                <button type="button" class="cancel-button" onclick="window.history.back()">Cancel</button>
+                <button type="submit" class="login-button">Login</button>
+            </div>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
     </div>
 </body>
 </html>
